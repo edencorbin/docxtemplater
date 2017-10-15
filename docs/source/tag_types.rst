@@ -98,6 +98,52 @@ will result in :
     Mac OSX, 200 €
     Ubuntu, 0€
 
+Nested loops are supported by nesting loop tags. The following template:
+
+.. code-block:: text
+    {#productCategories}
+    {name}
+    {#products}
+        {name}, {price} €
+    {/products}
+    {/productCategories}
+
+Given the following data:
+
+.. code-block:: javascript
+
+    {
+        "productCategories": [
+            {
+            name: "Operating Systems",
+                "products": [
+                    { name: "Windows", price: 100},
+                    { name: "Mac OSX", price: 200},
+                    { name: "Ubuntu", price: 0}
+                ]
+            },
+            {
+            name: "Software",
+                "products": [
+                    { name: "Backup", price: 50},
+                    { name: "Email", price: 50},
+                ]
+            },
+        ]
+    }
+
+will result in :
+
+.. code-block:: text
+
+    Operating Systems
+    Windows, 100 €
+    Mac OSX, 200 €
+    Ubuntu, 0€
+    Software
+    Backup, 50 €
+    Email, 50 €
+
 Sections
 --------
 
